@@ -11,6 +11,7 @@
     "flatline-lsp",
     "flatline_lsp"
   ],
+  "repository": "https://github.com/okdshin/vscode-flatline-lsp-client",
   "engines": {
     "vscode": "^1.85.0"
   },
