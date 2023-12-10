@@ -3,6 +3,15 @@
 See [Flatline-LSP](https://github.com/okdshin/flatline_lsp)
 
 
+# Install
+
+See release and download vsix file.
+
+```
+code --install-extension flatline-lsp-client-<version>.vsix  # please specify version 
+```
+
+
 # Setup vscode
 
 (Please install `flatline_lsp` before setup vscode)
@@ -19,7 +28,7 @@ Then restart vscode.
 ```
 npm install -g vsce
 vsce package
-code code --install-extension flatline-lsp-client-<version>.vsix  # please specify version 
+code --install-extension flatline-lsp-client-<version>.vsix  # please specify version 
 ```
 
 Then setup vscode.
