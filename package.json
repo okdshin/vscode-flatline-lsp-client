@@ -1,0 +1,67 @@
+{
+  "name": "flatline-lsp-client",
+  "displayName": "flatline-lsp-client",
+  "description": "",
+  "version": "0.0.1",
+  "keywords": [
+    "code-suggestion",
+    "copilot",
+    "code-inference",
+    "flatline",
+    "flatline-lsp",
+    "flatline_lsp"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "flatline-lsp-client",
+      "properties": {
+        "flatline-lsp-client.flatline_lsp_bin": {
+          "type": "string",
+          "default": "flatline-lsp"
+        },
+        "flatline-lsp-client.args_str": {
+          "type": "string",
+          "default": "<please specify>"
+        },
+        "flatline-lsp-client.languages": {
+          "type": "array",
+          "default": ["python", "cpp"]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "vscode-languageclient": "^8.0.2"
+  }
+}
