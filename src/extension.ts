@@ -19,13 +19,12 @@ export async function activate(context: ExtensionContext) {
 	statusBar.tooltip = `Flatline-LSP - Ready`;
 	statusBar.show();
 
-	let extConfig = workspace.getConfiguration("flatline-lsp-client");
+	let extConfig = workspace.getConfiguration("flatlineLspClient");
 
-	const serverExe: string = extConfig.get<string>("flatline_lsp_bin", "flatline-lsp");
-	const argsStr: string = extConfig.get<string>("args_str", "");
+	const serverExe: string = extConfig.get<string>("flatlineLspBin", "flatline-lsp");
+	const argsStr: string = extConfig.get<string>("argsStr", "");
 	const args: Array<string> = argsStr.split(" ");
 
-	// サーバーの設定
 	const serverOptions: ServerOptions = {
 		run: {
 			command: serverExe,
@@ -42,13 +41,15 @@ export async function activate(context: ExtensionContext) {
 	};
 
 	const languageList: string = extConfig.get<string>("languages", "plaintext");
-	var documentTypeList = Array<any>();
-	for(let lang of languageList) {
-		documentTypeList.push({language: lang});
-	}
-	let sel: DocumentSelector = documentTypeList;
+	const selector: DocumentSelector = languageList.split(",").map(lang => {
+		return {
+			language: lang.trim(),
+			scheme: "file",
+		};
+	});
+
 	const clientOptions: LanguageClientOptions = {
-		documentSelector: sel,
+		documentSelector: selector,
 		diagnosticCollectionName: 'flatline-lsp',
 		revealOutputChannelOn: RevealOutputChannelOn.Never,
 		initializationOptions: {},

@@ -22,19 +22,19 @@
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "flatline-lsp-client",
+      "title": "Flatline LSP Client",
       "properties": {
-        "flatline-lsp-client.flatline_lsp_bin": {
-          "type": "string",
-          "default": "flatline-lsp"
-        },
-        "flatline-lsp-client.args_str": {
+        "flatlineLspClient.flatlineLspBin": {
           "type": "string",
           "default": "<please specify>"
         },
-        "flatline-lsp-client.languages": {
-          "type": "array",
-          "default": ["python", "cpp"]
+        "flatlineLspClient.argsStr": {
+          "type": "string",
+          "default": ""
+        },
+        "flatlineLspClient.languages": {
+          "type": "string",
+          "default": "python,cpp"
         }
       }
     }
